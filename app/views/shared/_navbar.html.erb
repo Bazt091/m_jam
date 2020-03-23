@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+         <%if user_signed_in?%>
+            <i class="fa fa-user-circle-o" style="font-size:24px""></i>
+            <li><%=link_to 'Create PicStory', new_story_path %></li>-
+            <li><%=link_to 'My PicStories', stories_path %></li>-
+            <li><%=link_to'My Profile', edit_user_registration_path%> </li>-
+            <li><%= link_to 'Sign Out',  destroy_user_session_path, method: :delete %></li>
+             <% if current_user.admin? %>
+             <li><%= link_to 'All users', users_path %></li>
+             <%end%>
+            <%else%>
+              <li><%= link_to 'Sign_up',new_user_registration_path%>  </li>-
+              <li><%= link_to 'Log_in', new_user_session_path %>  </li>
+            <%end%>
+    </ul>
+  </div>
+</nav>
